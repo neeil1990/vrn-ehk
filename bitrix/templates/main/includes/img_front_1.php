@@ -1,0 +1,1 @@
+<img alt="Ликвидация складских остатков. Таких цен больше не будет" src="/upload/medialibrary/66a/1.01-likvidatsiya.-likvidatsiya-skladskikh-ostatkov.-takikh-tsen-bolshe-ne-budet.jpg" title="Ликвидация складских остатков. Таких цен больше не будет" width="300" height="200"><br>
