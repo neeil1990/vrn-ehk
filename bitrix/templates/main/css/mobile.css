@@ -578,6 +578,9 @@ h1,
 .personal_enter .title .ico{
     display: none;
 }
+.personal_enter .line .value input[type=text], .personal_enter .line .value input[type=password]{
+    width: 100%;
+}
 
 
 
