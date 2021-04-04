@@ -561,8 +561,23 @@ h1,
 .success_order .sale_order_full_table.table_0 .success_text .sub_title{
     line-height: 1.5;
 }
-
-
+.personal_enter{
+    margin: 0 auto;
+}
+.personal_enter .auth,
+.personal_enter .reg,
+.personal_enter .why,
+.check{
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: none;
+}
+.personal_enter .title .ico{
+    display: none;
+}
 
 
 
