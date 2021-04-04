@@ -1,1 +1,1 @@
-<img alt="Цены снижены" src="/upload/medialibrary/6b7/tseny-snizheny-_240kh360_.jpg" title="Цены снижены" width="360" height="240"><br>
+<img alt="Акция завершена" src="/upload/medialibrary/c8b/0.01-aktsiya-zavershena.jpg" title="Акция завершена" width="300" height="200"><br>

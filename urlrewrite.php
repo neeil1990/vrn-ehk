@@ -40,20 +40,20 @@ $arUrlRewrite=array (
     'PATH' => '/gallery-primer/index.php',
     'SORT' => 100,
   ),
-  6 => 
-  array (
-    'CONDITION' => '#^/specials/#',
-    'RULE' => '',
-    'ID' => 'bitrix:news',
-    'PATH' => '/specials/index.php',
-    'SORT' => 100,
-  ),
   5 => 
   array (
     'CONDITION' => '#^/articles/#',
     'RULE' => '',
     'ID' => 'bitrix:news',
     'PATH' => '/articles/index.php',
+    'SORT' => 100,
+  ),
+  6 => 
+  array (
+    'CONDITION' => '#^/specials/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/specials/index.php',
     'SORT' => 100,
   ),
   7 => 
@@ -72,20 +72,20 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
-  9 => 
-  array (
-    'CONDITION' => '#^/news/#',
-    'RULE' => '',
-    'ID' => 'bitrix:news',
-    'PATH' => '/news/index.php',
-    'SORT' => 100,
-  ),
   10 => 
   array (
     'CONDITION' => '#^/rest/#',
     'RULE' => '',
     'ID' => NULL,
     'PATH' => '/bitrix/services/rest/index.php',
+    'SORT' => 100,
+  ),
+  9 => 
+  array (
+    'CONDITION' => '#^/news/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/news/index.php',
     'SORT' => 100,
   ),
 );
