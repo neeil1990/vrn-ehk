@@ -583,6 +583,9 @@ h1,
 .personal_enter input[type=submit]{
     width: 100%;
 }
+.personal_enter .title{
+    font-size: 18px;
+}
 
 
 
