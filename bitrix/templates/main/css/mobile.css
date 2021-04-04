@@ -575,10 +575,12 @@ h1,
     background: #FFFFFF;
     border: none;
 }
-.personal_enter .title .ico{
+.personal_enter .title .ico,
+.personal_enter .line .uplabel{
     display: none;
 }
-.personal_enter .line .value input[type=text], .personal_enter .line .value input[type=password]{
+.personal_enter .line .value input[type=text], .personal_enter .line .value input[type=password],
+.personal_enter input[type=submit]{
     width: 100%;
 }
 
