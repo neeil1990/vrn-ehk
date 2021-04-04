@@ -1,12 +1,12 @@
 jQuery(function($){
-	
+
 	BX.addCustomEvent('onAjaxSuccess', function(){
-		$( "input[name=ORDER_PROP_15]" ).val($( "input[name=ORDER_PROP_1]" ).val());								
+		$( "input[name=ORDER_PROP_15]" ).val($( "input[name=ORDER_PROP_1]" ).val());
 		$( "input[name=ORDER_PROP_1]" ).blur(function() {
 			var fio = $(this).val();
 			$( "input[name=ORDER_PROP_15]" ).val(fio);
-		});			
-		
+		});
+
 		$( "input[name=ORDER_PROP_16]" ).inputmask("9999 999999");
 	});
 
@@ -243,7 +243,7 @@ jQuery(function($){
 		//$(".darker").fadeOut("fast");
 		return false;
 	});
-	
+
 	// срабатывание submit
 	$(document).on("click", ".submit a", function(){
 		$(this).parents("form").submit();
@@ -374,7 +374,7 @@ jQuery(function($){
 						btnNext: selector+" .right",
 				        btnPrev: selector+" .left"
 					});
-				} 
+				}
 			}
 		}
 		return false;
@@ -633,7 +633,7 @@ jQuery(function($){
 				if($(this).hasClass("req") && $(this).val()=="" && check)
 				{
 					if(!$(this).hasClass("email_check") && !$(this).hasClass("phone_check") && !$(this).hasClass("number_check"))
-					{	
+					{
 						error=true;
 						if($(this).parents(".input_block").length>0)
 						{
@@ -737,7 +737,7 @@ jQuery(function($){
 		need_form.find(".check input[type=checkbox]:not(:checked)").each(function(){
 				error=true;
 				if($(this).parents(".input_block").length>0)
-				{	
+				{
 					$(this).parents(".input_block").addClass("err");
 				}
 				else
@@ -785,9 +785,9 @@ jQuery(function($){
 		return false;
 	});
 
-	
 
-	
+
+
 
 	$(document).on("blur",".big_basket .count input",function(){
 		var quant=parseInt($(this).val());
@@ -882,7 +882,7 @@ jQuery(function($){
 			var data="id="+id+"&quant="+quant;
 	 		ChangeCount(data);
 		}
-		
+
 	});
 
 
@@ -914,7 +914,7 @@ jQuery(function($){
 
 	var rate = 1;
 
-	// покупка 
+	// покупка
 	$(document).on("click",".add2basket",function(e){
 		rate = $(this).data("rate");
 		if(!$(this).hasClass("null"))
@@ -958,7 +958,7 @@ jQuery(function($){
 				$(".popup.add_count .value input").attr("data-rate", rate);
 				$(".popup.add_count .indicator").attr("title",label);
 				$(".popup.add_count .indicator span").css("width",width+"%");
-				
+
 				var left="0px";
 				var top="0px";
 
@@ -991,7 +991,7 @@ jQuery(function($){
 							case "error":
 							alertify.error("Произошла ошибка. Попробуйте повторить запрос позже");
 							break;
-							
+
 							case "authorized":
 								$(".popup#authorized").fadeIn("fast");
 							break;
@@ -999,7 +999,11 @@ jQuery(function($){
 							case "success":
 							UpdateSmallBasket();
 							//alertify.success("Товар добавлен в корзину");
-							alertify.success("<img src='/bitrix/templates/main/images/t_h_basket_ico.png'> Товар добавлен в корзину", 0, 0);
+							if($(document).width() > 768){
+								alertify.success("<img src='/bitrix/templates/main/images/t_h_basket_ico.png'> Товар добавлен в корзину", 0, 0);
+							}else{
+								alertify.success("Добавлен <a href='/basket/'>перейти в корзину</a>", 0, 0);
+							}
 							break;
 
 							default:
@@ -1033,7 +1037,7 @@ jQuery(function($){
 							case "error":
 							alertify.error("Произошла ошибка. Попробуйте повторить запрос позже");
 							break;
-							
+
 							case "authorized":
 								$(".popup#authorized").fadeIn("fast");
 							break;
@@ -1041,7 +1045,13 @@ jQuery(function($){
 							case "success":
 							UpdateSmallBasket();
 							//alertify.success("Товар добавлен в корзину");
-							alertify.success("<img src='/bitrix/templates/main/images/t_h_basket_ico.png'> Товар добавлен в корзину", 0, 0);
+
+							if($(document).width() > 768){
+								alertify.success("<img src='/bitrix/templates/main/images/t_h_basket_ico.png'> Товар добавлен в корзину", 0, 0);
+							}else{
+								alertify.success("Добавлен <a href='/basket/'>перейти в корзину</a>", 0, 0);
+							}
+
 							cur_form.parents(".popup").fadeOut("fast");
 							cur_form.fadeTo("fast",1);
 							break;
@@ -1220,7 +1230,7 @@ jQuery(function($){
 			scroll: 1,
 			btnNext: ".catalog_detail .image_col .preview_images .man .right",
 	        btnPrev: ".catalog_detail .image_col .preview_images .man .left"
-		}); 
+		});
 	}
 
 
@@ -1257,7 +1267,7 @@ jQuery(function($){
 			visible: 5,
 			btnNext: ".look_like .carusel .arrows .right",
 	        btnPrev: ".look_like .carusel .arrows .left"
-		}); 
+		});
 	}
 
 	// страница галереи
@@ -1279,7 +1289,7 @@ jQuery(function($){
 			scroll: 1,
 			btnNext: ".gallery_detail .image_col .preview_images .man .right",
 	        btnPrev: ".gallery_detail .image_col .preview_images .man .left"
-		}); 
+		});
 	}
 
 
@@ -1348,7 +1358,7 @@ jQuery(function($){
 			$(".reviews_page .item[data-id='"+show_item+"']").addClass("active");
 			var need_height=$(".reviews_page .item[data-id='"+show_item+"']").find(".text_block .hidden_text span").outerHeight()+15;
 			$(".reviews_page .item[data-id='"+show_item+"']").find(".text_block .hidden_text").animate({"height":need_height},"fast",function(){
-				$("html,body").animate({"scrollTop":$(this).parents(".item").offset().top-30},"fast"); 
+				$("html,body").animate({"scrollTop":$(this).parents(".item").offset().top-30},"fast");
 				$(this).addClass("opened");
 				$(".reviews_page .item[data-id='"+show_item+"']").find(".text_block .show_review a").text("Скрыть");
 			});
@@ -1369,7 +1379,7 @@ jQuery(function($){
 			circular: false,
 			scroll: 1,
 			btnGo: go_arr
-		}); 
+		});
 	}
 	$(".spec_carusel .man li a").click(function(){
 		if(!$(this).parents("li").hasClass("active"))
@@ -1417,7 +1427,7 @@ jQuery(function($){
 			});
 		}
 		return false;
-	});	
+	});
 
 	// персональная страница
 	$(document).on("submit",".personal_page .change_pass",function(){
@@ -1526,7 +1536,7 @@ jQuery(function($){
 			visible: 5,
 			btnNext: selector+" .right",
 	        btnPrev: selector+" .left"
-		}); 
+		});
 	}
 
 	// товар под заказ
@@ -1567,5 +1577,20 @@ jQuery(function($){
 			cur_popup.ShowError();
 		}
 		return false;
-	});	
+	});
+
+	$('#mobile-menu-btn').click(function () {
+		$(this).closest('.mobile-header').find('.drop-down-menu').toggle();
+		return false;
+	});
+
+
+	var header__bottom = $( ".main_container .header" ).offset().top + 150;
+	$(document).scroll(function() {
+		if ($(this).scrollTop() >= header__bottom)
+			$( ".main_container .fixed-header" ).addClass( 'active' );
+		else
+			$( ".main_container .fixed-header" ).removeClass( 'active' );
+	});
+
 });

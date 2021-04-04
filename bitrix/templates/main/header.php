@@ -2,10 +2,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/lightbox.css" />
 		<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/alertify.core.css" />
 		<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/alertify.default.css" />
 		<link href="<?=SITE_TEMPLATE_PATH?>/css/selectbox.css" rel="stylesheet" />
+
 		<script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/jquery-2.1.1.min.js"></script>
 		<script src="<?=SITE_TEMPLATE_PATH?>/js/alertify.min.js" type="text/javascript"></script>
 		<script src="<?=SITE_TEMPLATE_PATH?>/js/jcarousellite_1.0.1.pack.js" type="text/javascript"></script>
@@ -14,7 +16,7 @@
 		<script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/scripts.js"></script>
 		<script src="/bitrix/templates/main/js/inputmask/jquery.inputmask.js" type="text/javascript"></script>
 		<script src="/bitrix/templates/main/js/inputmask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-		
+
 		<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/scroll/image.css" />
 		<script src="/bitrix/templates/main/js/jquery.scrollUp.js" type="text/javascript"></script>
 		<link href="/favicon.png" rel="icon" type="image/x-icon">
@@ -24,16 +26,17 @@
 		<meta name="cmsmagazine" content="4bba8fa61d908c6dea29bdc36d5f8a50" />
 		<meta name="google-site-verification" content="zS36U7W4h7czLnhhaM3SwykhTnoSg_OhTBYkRx7YUyM" />
 
-	
+
 		<title><?$APPLICATION->ShowTitle();?></title>
-		<? $APPLICATION->ShowMeta("keywords")   // Вывод мета тега keywords ?> 
+		<? $APPLICATION->ShowMeta("keywords")   // Вывод мета тега keywords ?>
 		<? $APPLICATION->ShowMeta("description") // Вывод мета тега description ?>
- 
- 
-<? $APPLICATION->ShowCSS(); // Подключение основных файлов стилей template_styles.css и styles.css ?> 
-<? $APPLICATION->ShowHeadStrings() // Отображает специальные стили, JavaScript ?> 
+
+
+<? $APPLICATION->ShowCSS(); // Подключение основных файлов стилей template_styles.css и styles.css ?>
+<? $APPLICATION->ShowHeadStrings() // Отображает специальные стили, JavaScript ?>
 <? $APPLICATION->ShowHeadScripts() // Вывода служебных скриптов ?>
 
+        <link href="<?=SITE_TEMPLATE_PATH?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 768px)">
 		<!--[if lt IE 8]><link rel="stylesheet" href="/bitrix/templates/main/css/ie.css" type="text/css" /><![endif]-->
 
 		<!-- Отключение обработки номеров Skype -->
@@ -88,16 +91,16 @@
 	<body>
 		<?$APPLICATION->ShowPanel();?>
 		<script>
-		
+
 		$(function(){
-			
+
 			$.scrollUp({
 				scrollText: ''
 			});
 
 		});
 		</script>
-		
+
 		<div class="main_container">
 			<div class="header">
 				<div class="logo">
@@ -107,19 +110,19 @@
 				</div>
 				<div class="menu_line">
 					<?$APPLICATION->IncludeComponent("bitrix:menu", "top_menu_multi", Array(
-	"ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
-	"MENU_CACHE_TYPE" => "A",	// Тип кеширования
-	"MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
-	"MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
-	"MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
-	"MAX_LEVEL" => "2",	// Уровень вложенности меню
-	"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
-	"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
-	"DELAY" => "N",	// Откладывать выполнение шаблона меню
-	"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
-	),
-	false
-);?>
+                            "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+                            "MENU_CACHE_TYPE" => "A",	// Тип кеширования
+                            "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                            "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                            "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                            "MAX_LEVEL" => "2",	// Уровень вложенности меню
+                            "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                            "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                            "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                            "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                            ),
+                            false
+                        );?>
 					<div class="personal_block">
 						<noindex><nofollow><a href="/personal/"><?if($USER->IsAuthorized()){echo $USER->GetLogin();}else{echo "Личный кабинет";}?></a></nofollow></noindex>
 					</div>
@@ -141,8 +144,8 @@
 				<div class="info_line">
 					<div class="search_block">
 						<?$APPLICATION->IncludeComponent(
-	"bitrix:search.title", 
-	"top_search", 
+	"bitrix:search.title",
+	"top_search",
 	array(
 		"NUM_CATEGORIES" => "3",
 		"TOP_COUNT" => "5",
@@ -184,41 +187,196 @@
 					<!-- Старый блок со слоганом
 					<div class="slogan">
 						<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/slogan.php", Array(), Array(
-						    "MODE"      => "html", 
-						    "NAME"      => "слоган", 
-						    "TEMPLATE"  => "slogan.php" 
+						    "MODE"      => "html",
+						    "NAME"      => "слоган",
+						    "TEMPLATE"  => "slogan.php"
 						    )
 						);?>
 					</div>
 					-->
 					<div class="address">
 						<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/address.php", Array(), Array(
-						    "MODE"      => "html", 
-						    "NAME"      => "адрес", 
-						    "TEMPLATE"  => "address.php" 
+						    "MODE"      => "html",
+						    "NAME"      => "адрес",
+						    "TEMPLATE"  => "address.php"
 						    )
 						);?>
 					</div>
 					<div class="phone">
 						<span class="number">
 							<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone.php", Array(), Array(
-							    "MODE"      => "html", 
-							    "NAME"      => "телефон сверху", 
-							    "TEMPLATE"  => "top_phone.php" 
+							    "MODE"      => "html",
+							    "NAME"      => "телефон сверху",
+							    "TEMPLATE"  => "top_phone.php"
 							    )
 							);?>
 						</span>
 						<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_email.php", Array(), Array(
-						    "MODE"      => "html", 
-						    "NAME"      => "E-mail сверху", 
-						    "TEMPLATE"  => "top_email.php" 
+						    "MODE"      => "html",
+						    "NAME"      => "E-mail сверху",
+						    "TEMPLATE"  => "top_email.php"
 						    )
 						);?>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>
-			</div><!-- end: header-->
+			</div>
+            <!-- end: header-->
+
+            <div class="fixed-header">
+                <div class="fixed-menu">
+                    <div class="logo">
+                        <a href="/" title="Главная страница | ЭХК - кованные изделия, все для ковки" class="logo">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/images/t_h_logo.jpg" alt="ЭХК - кованные изделия, все для ковки" />
+                        </a>
+                    </div>
+
+                   <div class="menu">
+                       <?$APPLICATION->IncludeComponent("bitrix:menu", "top_menu_multi", Array(
+                           "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+                           "MENU_CACHE_TYPE" => "A",	// Тип кеширования
+                           "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                           "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                           "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                           "MAX_LEVEL" => "2",	// Уровень вложенности меню
+                           "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                           "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                           "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                           "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                       ),
+                           false
+                       );?>
+                   </div>
+
+                    <div class="phone">
+                        <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone.php", Array(), Array(
+                                "MODE"      => "html",
+                                "NAME"      => "телефон сверху",
+                                "TEMPLATE"  => "top_phone.php"
+                            )
+                        );?>
+                    </div>
+
+                    <div class="search">
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:search.title",
+                            "top_search",
+                            array(
+                                "NUM_CATEGORIES" => "3",
+                                "TOP_COUNT" => "5",
+                                "ORDER" => "date",
+                                "USE_LANGUAGE_GUESS" => "N",
+                                "CHECK_DATES" => "N",
+                                "SHOW_OTHERS" => "N",
+                                "PAGE" => "#SITE_DIR#search/",
+                                "CATEGORY_0_TITLE" => "Каталог",
+                                "CATEGORY_0" => array(
+                                    0 => "iblock_catalog",
+                                ),
+                                "CATEGORY_0_iblock_catalog" => array(
+                                    0 => "all",
+                                ),
+                                "CATEGORY_1_TITLE" => "Информация",
+                                "CATEGORY_1" => array(
+                                    0 => "iblock_info",
+                                ),
+                                "CATEGORY_1_iblock_info" => array(
+                                    0 => "10",
+                                    1 => "2",
+                                    2 => "3",
+                                    3 => "8",
+                                ),
+                                "CATEGORY_2_TITLE" => "Сайт",
+                                "CATEGORY_2" => array(
+                                    0 => "main",
+                                ),
+                                "CATEGORY_2_main" => array(
+                                ),
+                                "SHOW_INPUT" => "Y",
+                                "INPUT_ID" => "title-search-input",
+                                "CONTAINER_ID" => "title-search"
+                            ),
+                            false
+                        );?>
+                    </div>
+
+                    <div class="cart">
+                        <img src="/bitrix/templates/main/images/t_h_basket_ico.png" alt="cart">
+                        <?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.line", "top_basket", array(
+                            "PATH_TO_BASKET" => "/basket/",
+                            "PATH_TO_PERSONAL" => "/personal/",
+                            "SHOW_PERSONAL_LINK" => "N",
+                            "SHOW_NUM_PRODUCTS" => "Y",
+                            "SHOW_TOTAL_PRICE" => "N",
+                            "SHOW_PRODUCTS" => "N",
+                            "POSITION_FIXED" => "N"
+                        ),
+                            false
+                        );?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-header">
+                <div class="menu">
+                    <div class="col">
+                        <a href="/" title="Главная страница | ЭХК - кованные изделия, все для ковки" class="logo">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/images/t_h_logo.jpg" alt="ЭХК - кованные изделия, все для ковки" />
+                        </a>
+                    </div>
+                    <div class="col">
+                        <div class="phone">
+                            <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone_mobile.php", Array(), Array(
+                                    "MODE"      => "html",
+                                    "NAME"      => "телефон сверху",
+                                    "TEMPLATE"  => "top_phone.php"
+                                )
+                            );?>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href="#" class="menu-btn" id="mobile-menu-btn">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/images/hamburger.png" alt="menu">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="drop-down-menu">
+                    <div class="address">
+                        <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/address.php", Array(), Array(
+                                "MODE"      => "html",
+                                "NAME"      => "адрес",
+                                "TEMPLATE"  => "address.php"
+                            )
+                        );?>
+                    </div>
+                    <div class="personal">
+                        <nofollow>
+                            <? if($USER->IsAuthorized()): ?>
+                            <p>Личный кабинет</p>
+                            <? endif; ?>
+                            <a href="/personal/"><?if($USER->IsAuthorized()){echo $USER->GetLogin();}else{echo "Личный кабинет";}?></a>
+                        </nofollow>
+                    </div>
+
+                    <?$APPLICATION->IncludeComponent("bitrix:menu", "mobile", Array(
+                        "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+                        "MENU_CACHE_TYPE" => "A",	// Тип кеширования
+                        "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                        "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                        "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                        "MAX_LEVEL" => "2",	// Уровень вложенности меню
+                        "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                        "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                        "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                        "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                    ),
+                        false
+                    );?>
+                </div>
+            </div>
+
 			<div class="content" <?if(!$is_main){ echo 'id="inner"'; }?>>
 				<?if(!$is_main){?>
 				<div class="title_block">
@@ -255,8 +413,8 @@
 						<h1><?=$APPLICATION->ShowTitle(false)?></h1>
 					<?}?>
 				</div>
-				<?if(!$is_detail && $APPLICATION->GetCurPage() != "/basket/" && !$is_detail_gallery 
-					&& strpos($APPLICATION->GetCurPage(),"/personal/")===false 
+				<?if(!$is_detail && $APPLICATION->GetCurPage() != "/basket/" && !$is_detail_gallery
+					&& strpos($APPLICATION->GetCurPage(),"/personal/")===false
 					&& $APPLICATION->GetCurPage() != "/kontakty/"
 					&& $APPLICATION->GetCurPage() != "/make-order/")
 				{?>
