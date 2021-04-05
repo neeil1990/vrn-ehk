@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("История заказов");
 ?>
-<div class="personal_page">
+<div class="personal_page orders">
 	<ul class="pers_pages_menu menu_type">
 		<li><a href="/?logout=yes"><span>Выйти</span></a></li>
 		<li><a href="/personal/"><span>Настройки аккаунта</span></a></li>
@@ -11,8 +11,8 @@ $APPLICATION->SetTitle("История заказов");
 	<div class="blocks order_block">
 		<div class="block">
 			<?$APPLICATION->IncludeComponent(
-	"bitrix:sale.personal.order", 
-	"common", 
+	"bitrix:sale.personal.order",
+	"common",
 	array(
 		"PROP_1" => array(
 		),
