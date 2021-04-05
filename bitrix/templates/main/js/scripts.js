@@ -961,9 +961,9 @@ jQuery(function($){
 
 				var left="0px";
 				var top="0px";
-
-				left=$(this).parents(".item").offset().left+"px";
-				top=$(this).parents(".item").offset().top+$(this).parents(".item").outerHeight()-132+"px";
+				
+				left=$(this).parents(".item").position().left+"px";
+				top=$(this).parents(".item").position().top+$(this).parents(".item").outerHeight()-132+"px";
 				if($(this).parents(".carusel").length>0)
 				{
 					$(".popup.add_count").addClass("wide");
