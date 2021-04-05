@@ -961,8 +961,8 @@ jQuery(function($){
 
 				var left="0px";
 				var top="0px";
-				
-				left=$(this).parents(".item").position().left+"px";
+
+				left=$(this).parents(".item").position().left + parseInt($(this).parents(".item").css('marginLeft'), 10) + "px";
 				top=$(this).parents(".item").position().top+$(this).parents(".item").outerHeight()-132+"px";
 				if($(this).parents(".carusel").length>0)
 				{
@@ -1084,6 +1084,44 @@ jQuery(function($){
 					else
 					{
 						$(".menu_line .small_basket").fadeTo("fast",1);
+						alertify.error("Произошла ошибка. Попробуйте повторить запрос позже");
+					}
+				}
+			});
+		});
+
+		$(".fixed_basket").fadeTo("fast",0.8,function(){
+			$.ajax({
+				type: "GET",
+				url: "/ajax/fixed_basket.php",
+				data:"",
+				success: function(msg){
+					if(msg!="error")
+					{
+						$(".fixed_basket").html(msg).fadeTo("fast",1);
+					}
+					else
+					{
+						$(".fixed_basket").fadeTo("fast",1);
+						alertify.error("Произошла ошибка. Попробуйте повторить запрос позже");
+					}
+				}
+			});
+		});
+
+		$(".mobile_basket").fadeTo("fast",0.8,function(){
+			$.ajax({
+				type: "GET",
+				url: "/ajax/mobile_basket.php",
+				data:"",
+				success: function(msg){
+					if(msg!="error")
+					{
+						$(".mobile_basket").html(msg).fadeTo("fast",1);
+					}
+					else
+					{
+						$(".mobile_basket").fadeTo("fast",1);
 						alertify.error("Произошла ошибка. Попробуйте повторить запрос позже");
 					}
 				}

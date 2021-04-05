@@ -47,6 +47,21 @@ h1,
     display: block;
     margin-left: 10px;
 }
+.mobile-header .menu .col .cart{
+    text-align: center;
+}
+.mobile-header .menu .col .cart a{
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    position: relative;
+}
+.mobile-header .menu .col .cart img{
+    vertical-align: middle;
+}
+.mobile-header .menu .col .cart span{
+    position: absolute;
+}
 
 .mobile-header .menu .col .logo img{
     max-height: 40px;
@@ -241,7 +256,7 @@ h1,
 }
 .catalog_section_list .items .item{
     float: unset;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 .content#inner .title_block h1{
     color: #000000;
@@ -585,6 +600,16 @@ h1,
 }
 .personal_enter .title{
     font-size: 18px;
+}
+.catalog_section_list .sort_block .item .value select{
+    width: 100%;
+}
+.catalog_section_list .modern-page-navigation{
+    margin: 0 auto;
+}
+div.modern-page-navigation a{
+    margin: 15px;
+    border: none!important;
 }
 
 

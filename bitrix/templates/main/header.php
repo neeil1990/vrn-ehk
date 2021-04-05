@@ -301,7 +301,7 @@
                         );?>
                     </div>
 
-                    <div class="cart">
+                    <div class="cart fixed_basket">
                         <img src="/bitrix/templates/main/images/t_h_basket_ico.png" alt="cart">
                         <?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.line", "top_basket", array(
                             "PATH_TO_BASKET" => "/basket/",
@@ -326,12 +326,17 @@
                         </a>
                     </div>
                     <div class="col">
-                        <div class="phone">
-                            <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone_mobile.php", Array(), Array(
-                                    "MODE"      => "html",
-                                    "NAME"      => "телефон сверху",
-                                    "TEMPLATE"  => "top_phone.php"
-                                )
+                        <div class="cart mobile_basket">
+                            <?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.line", "mobile", array(
+                                "PATH_TO_BASKET" => "/basket/",
+                                "PATH_TO_PERSONAL" => "/personal/",
+                                "SHOW_PERSONAL_LINK" => "N",
+                                "SHOW_NUM_PRODUCTS" => "Y",
+                                "SHOW_TOTAL_PRICE" => "N",
+                                "SHOW_PRODUCTS" => "N",
+                                "POSITION_FIXED" => "N"
+                            ),
+                                false
                             );?>
                         </div>
                     </div>
@@ -343,6 +348,14 @@
                 </div>
 
                 <div class="drop-down-menu">
+                    <div class="phone">
+                        <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone_mobile.php", Array(), Array(
+                                "MODE"      => "html",
+                                "NAME"      => "телефон сверху",
+                                "TEMPLATE"  => "top_phone.php"
+                            )
+                        );?>
+                    </div>
                     <div class="address">
                         <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/address.php", Array(), Array(
                                 "MODE"      => "html",
