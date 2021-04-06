@@ -1642,4 +1642,18 @@ jQuery(function($){
 			$( ".main_container .fixed-header" ).removeClass( 'active' );
 	});
 
+	$('body').on('click','form input[type="submit"]', function(e) {
+		var self = $(this);
+		grecaptcha.ready(function() {
+			grecaptcha.execute('6Le8ZZ4aAAAAAMZUhsxou8BmT27TR4NaAh3HivxN', {action: 'submit'}).then(function(token) {
+				// Add your logic to submit to your backend server here.
+				var form = self.closest('form');
+				form.prepend($('<input>').attr({name : 'g-recaptcha-response', type : 'hidden', value : token}));
+				//self.remove();
+				form.submit();
+			});
+		});
+		return false;
+	});
+
 });

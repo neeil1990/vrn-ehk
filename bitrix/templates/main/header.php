@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/alertify.default.css" />
 		<link href="<?=SITE_TEMPLATE_PATH?>/css/selectbox.css" rel="stylesheet" />
 
+        <script src="https://www.google.com/recaptcha/api.js?render=6Le8ZZ4aAAAAAMZUhsxou8BmT27TR4NaAh3HivxN"></script>
+
 		<script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/jquery-2.1.1.min.js"></script>
 		<script src="<?=SITE_TEMPLATE_PATH?>/js/alertify.min.js" type="text/javascript"></script>
 		<script src="<?=SITE_TEMPLATE_PATH?>/js/jcarousellite_1.0.1.pack.js" type="text/javascript"></script>
