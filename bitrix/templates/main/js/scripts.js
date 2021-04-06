@@ -962,8 +962,16 @@ jQuery(function($){
 				var left="0px";
 				var top="0px";
 
-				left=$(this).parents(".item").position().left + parseInt($(this).parents(".item").css('marginLeft'), 10) + "px";
-				top=$(this).parents(".item").position().top+$(this).parents(".item").outerHeight()-132+"px";
+				if($(this).parents(".item").hasClass('slide')){
+
+					left=$(this).parents(".item").offset().left - 316 + "px";
+					top=$(this).parents(".item").offset().top + $(this).parents(".item").outerHeight() - 275 + "px";
+				}else{
+
+					left=$(this).parents(".item").position().left + parseInt($(this).parents(".item").css('marginLeft'), 10) + "px";
+					top=$(this).parents(".item").position().top+$(this).parents(".item").outerHeight()-132+"px";
+				}
+
 				if($(this).parents(".carusel").length>0)
 				{
 					$(".popup.add_count").addClass("wide");
@@ -1567,13 +1575,16 @@ jQuery(function($){
 		$(".catalog_spec_slider .tabs .tab.active.init .carusel .inn li").css("height",max_height);
 		var selector=".catalog_spec_slider .tabs .tab .arrows#arr_"+$(".catalog_spec_slider .tabs .tab.active.init").data("id");
 		$(".catalog_spec_slider .tabs .tab.active.init .carusel .inn").jCarouselLite({
-			auto: 5000,
+			auto: 10000,
 			vertical: false,
 			circular: true,
 			scroll: 1,
 			visible: 5,
 			btnNext: selector+" .right",
-	        btnPrev: selector+" .left"
+	        btnPrev: selector+" .left",
+			afterEnd: function(a) {
+				$('.popup.add_count').hide();
+			}
 		});
 	}
 

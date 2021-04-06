@@ -74,34 +74,34 @@ $APPLICATION->SetTitle("Художественная ковка и кованы�
 
 							<?
 								$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/img_front_1.php", Array(), Array(
-							    "MODE"      => "html", 
-							    "NAME"      => "Картинка", 
-							    "TEMPLATE"  => "img_front_1.php" 
+							    "MODE"      => "html",
+							    "NAME"      => "Картинка",
+							    "TEMPLATE"  => "img_front_1.php"
 							    )
 							);
-							
+
 							?>
-							
+
 									</span>
 								</a>
-								
+
 								<span class="name"><a rel="nofollow" href="/catalog/filter/?SHOW=SPEC_RAZDEL"><?=tplvar('name_1',true);?></a></span>
 							</li>
-<!--	комментировать строки ниже --> 
+<!--	комментировать строки ниже -->
 							<li class="category_home_page">
 
 								<a rel="nofollow" class="image" href="/catalog/filter/?SHOW=NEW_RAZDEL">
 									<span>
 							<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/img_front_2.php", Array(), Array(
-							    "MODE"      => "html", 
-							    "NAME"      => "Картинка", 
-							    "TEMPLATE"  => "img_front_2.php" 
+							    "MODE"      => "html",
+							    "NAME"      => "Картинка",
+							    "TEMPLATE"  => "img_front_2.php"
 							    )
 							);?>
 									</span>
 								</a>
 
-					
+
 <span class="name"><a rel="nofollow" href="/catalog/filter/?SHOW=NEW_RAZDEL"><?= tplvar('name_2',true);?></a></span>
 							</li>
 <!-- до сюда -->
@@ -230,15 +230,15 @@ $APPLICATION->SetTitle("Художественная ковка и кованы�
 		</div>
 	<?}?>
 	<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/our_benefits.php", Array(), Array(
-	    "MODE"      => "html", 
-	    "NAME"      => "наши преимущества", 
-	    "TEMPLATE"  => "our_benefits.php" 
+	    "MODE"      => "html",
+	    "NAME"      => "наши преимущества",
+	    "TEMPLATE"  => "our_benefits.php"
 	    )
 	);?>
 </div>
 <?$obCache = new CPHPCache;
-$life_time = 24*60*60; 
-$cache_id = "main_page"; 
+$life_time = 24*60*60;
+$cache_id = "main_page";
 if($obCache->InitCache($life_time, $cache_id, "/"))
 {
 	$obCache->Output();
@@ -269,7 +269,7 @@ else
 					$url="";
 					foreach($filters as $key=>$filter)
 					{
-						switch ($key) 
+						switch ($key)
 						{
 							case 0:
 								$label="лидеры";
@@ -310,7 +310,7 @@ else
 											}
 
 											$price=My::GetMinPrice($item["ID"],1);?>
-											<li class="item" data-id="<?=$item["ID"]?>">
+											<li class="item slide" data-id="<?=$item["ID"]?>">
 												<!--noindex-->
 												<a rel="nofollow" href="<?=$item["DETAIL_PAGE_URL"]?>" class="image">
 													<span>
@@ -362,7 +362,7 @@ else
 				}?>
 			</div>
 		</div>
-	<?$obCache->EndDataCache(); 
+	<?$obCache->EndDataCache();
 	}
 }?>
 
@@ -370,22 +370,22 @@ else
 
 <div class="mp_text_block">
 	<?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/main_text.php", Array(), Array(
-	    "MODE"      => "html", 
-	    "NAME"      => "текст на главной", 
-	    "TEMPLATE"  => "main_text.php" 
+	    "MODE"      => "html",
+	    "NAME"      => "текст на главной",
+	    "TEMPLATE"  => "main_text.php"
 	    )
 	);?>
-	
+
 	<!-- <div class="border_block">
-	
+
 	<?/*$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/border_text.php", Array(), Array(
-		    "MODE"      => "html", 
-		    "NAME"      => "текст в рамке", 
-		    "TEMPLATE"  => "border_text.php" 
+		    "MODE"      => "html",
+		    "NAME"      => "текст в рамке",
+		    "TEMPLATE"  => "border_text.php"
 		    )
 		);*/?>
 	</div> -->
-	
+
 	<div class="clear"></div>
 </div>
 
