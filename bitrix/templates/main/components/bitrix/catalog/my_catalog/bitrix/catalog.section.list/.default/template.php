@@ -14,56 +14,56 @@ $this->setFrameMode(true);?>
 <div class="selector_block">
 	<div class="selector_content">
 		<div class="catalog_section_list">
-		
+
 		<div class="items">
-		
-		
+
+
 		<?
 				foreach ($arResult['SECTIONS'] as &$arSection){
-					
+
 					if($arSection['IBLOCK_SECTION_ID'] == 944){
-											
+
 						if(CModule::IncludeModule("iblock"))
 						{
-							
+
 							  $arFilter = Array('IBLOCK_ID'=>$arParams['IBLOCK_ID'], 'GLOBAL_ACTIVE'=>'Y', 'SECTION_ID'=>$arSection['ID']);
 							  $db_list = CIBlockSection::GetList(Array("SORT"=>"ASC"), $arFilter, true);
 							  while($ar_result = $db_list->GetNext())
 							  {
-								  $arResult['SECTIONS'][] = $ar_result;  
+								  $arResult['SECTIONS'][] = $ar_result;
 							  }
-							  
+
 						}
 					}
 				}
-				
-				
-				
+
+
+
 				$arrCount = array();
-				
-		
+
+
 				foreach ($arResult['SECTIONS'] as &$arSection){
-					
+
 					if(
 					$arSection['IBLOCK_SECTION_ID'] == 944 OR
 					$arSection['IBLOCK_SECTION_ID'] == 946
 					){
-											
+
 						if(CModule::IncludeModule("iblock"))
 						{
-							
-					
-						
+
+
+
 						   // выберем 10 элементов из папки $ID информационного блока $BID
 						   $items = GetIBlockElementList($arParams['IBLOCK_ID'], $arSection['ID'], Array("sort"=>"asc"),false,$fillter);
 						   while($arItem = $items->GetNext())
 						   {
-					
-									
-							   		 
+
+
+
 			$prop = CIBlockElement::GetProperty($arParams['IBLOCK_ID'], $arItem["ID"], array("sort" => "asc"), Array("CODE"=>"CML2_ARTICLE")); // по известным только Битрикс причинам, при выводе Артикула в списке, Битрикс обрезал 0 в начале и конце, поэтому добавлена таккая конструкция
 			$prop = $prop -> Fetch();
-			
+
 
 			if ($arItem["PROPERTIES"]["COUNT_RATE"]["VALUE"]){
 				$count = $arItem["PROPERTIES"]["COUNT_RATE"]["VALUE"];
@@ -75,32 +75,32 @@ $this->setFrameMode(true);?>
 			$strMainID = $this->GetEditAreaId($arItem['ID']);
 			$price=My::GetMinPrice($arItem["ID"],1);
 			$QUANTITY = CCatalogProduct::GetByID($arItem["ID"]);
-			
+
 			?>
-			
+
 			<div class="item" id="<?=$strMainID;?>">
-			
-			
-			
+
+
+
 			<?
 			$stiker = CIBlockElement::GetProperty($arParams['IBLOCK_ID'], $arItem["ID"], array("sort" => "asc"), Array("CODE"=>"STICKER"));
 			$stiker = $stiker -> Fetch();
-			
+
 			$last_prod = CIBlockElement::GetProperty($arParams['IBLOCK_ID'], $arItem["ID"], array("sort" => "asc"), Array("CODE"=>"LAST_PRODUCT"));
 			$last_prod = $last_prod -> Fetch();
-			
+
 			if ($stiker['VALUE_ENUM'] == "Y") {?>
 				<?if ($price["FULL"] > $price["PRICE"]) {?>
 					<div class="sale <?=($last_prod["VALUE_ENUM"] == "Y") ? "last" : null;?>">- <?=round((($price["FULL"] - $price["PRICE"]) / $price["FULL"]) * 100);?>%</div>
 				<?}?>
 			<?}?>
-			
+
 			<?if($last_prod["VALUE_ENUM"] == "Y"):?>
 				<div class="last-prod">
 					<img src="<?=SITE_TEMPLATE_PATH ?>/images/last_prod.png">
 				</div>
 			<?endif;?>
-				
+
 				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="image">
 					<span>
 						<img <?=My::NewResize($arItem["PREVIEW_PICTURE"],219,210,false);?> alt="<?=$arItem["NAME"]?>" />
@@ -109,7 +109,7 @@ $this->setFrameMode(true);?>
 				<?
 					//var_dump($QUANTITY['QUANTITY']);
 				?>
-				
+
 				<?if($prop["VALUE"] != "10.10")
 					{?>
 					<span class="art">
@@ -118,10 +118,10 @@ $this->setFrameMode(true);?>
 					<?}else{?>
 					<span class="" style="padding: 0 10px;height: 17px;overflow: hidden;display: inline-block;margin: 0 0 10px 0;"></span>
 					<?}?>
-				
+
 				<span class="name">
 				<?
-					$arrayP = array('NAIMENOVANIE_SAYT01','NAIMENOVANIE_SAYT02','NAIMENOVANIE_SAYT03');	
+					$arrayP = array('NAIMENOVANIE_SAYT01','NAIMENOVANIE_SAYT02','NAIMENOVANIE_SAYT03');
 					foreach($arrayP as $p){
 					$prop = CIBlockElement::GetProperty($arParams['IBLOCK_ID'], $arItem["ID"], array("sort" => "asc"), Array("CODE"=>$p)); // по известным только Битрикс причинам, при выводе Артикула в списке, Битрикс обрезал 0 в начале и конце, поэтому добавлена таккая конструкция
 					$prop = $prop -> Fetch();
@@ -142,14 +142,14 @@ $this->setFrameMode(true);?>
 				<span class="preview"><?=$arItem["PREVIEW_TEXT"]?></span>
 				<?if($QUANTITY['QUANTITY']>0 and $price["PRICE"]>0)
 				{?>
-					<?if ($price["FULL"] > $price["PRICE"]) {?>							
-					
+					<?if ($price["FULL"] > $price["PRICE"]) {?>
+
 							<?if($stiker['VALUE_ENUM'] == "Y" or $last_prod["VALUE_ENUM"] == "Y"):?>
 								<div class="price with_old"><div class="old"><b><?=My::Money($price["FULL"])?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div><b><?=My::Money($price["PRICE"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div>
 							<?else:?>
 								<div class="price"><div class="old"><b></b></div><b><?=My::Money($price["FULL"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div>
 							<?endif;?>
-							
+
 					<?
 					}else{?>
 					<div class="price"><div class="old"><b></b></div><b><?=My::Money($price["FULL"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div>
@@ -164,38 +164,39 @@ $this->setFrameMode(true);?>
 					</div>
 				<?}?>
 			</div>
-			
-			
+
+
 			<?
-							 			 
+
 						   }
-			
+
 						}
-					
+
 					}
-					
+
 				}
 		?>
 		<div class="clear"></div>
 		</div>
 
-		
-		
+
+
 			<ul class="menu_type">
 				<?foreach ($arResult['SECTIONS'] as &$arSection)
 				{
-					
+
 					if(
-					$arSection['IBLOCK_SECTION_ID'] != 944 and 
+					$arSection['IBLOCK_SECTION_ID'] != 944 and
 					$arSection['IBLOCK_SECTION_ID'] != 946
-					){	
-					
+					){
+
 					$this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
-					$this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);?>
+					$this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
+					?>
 					<li id="<?=$this->GetEditAreaId($arSection['ID']);?>" class="category_home_page">
 						<a class="image" href="<?=$arSection["SECTION_PAGE_URL"]?>">
 							<span>
-								<img <?=My::NewResize($arSection["PICTURE"],180,120,false);?> alt="<?=$arSection["NAME"]?>" />
+								<img src="<?=$arSection["PICTURE"]["SRC"]?>" alt="<?=$arSection["NAME"]?>" />
 							</span>
 						</a>
 						<span class="name">
@@ -220,7 +221,7 @@ $this->setFrameMode(true);?>
 			<div class="under_text">
 				<h1><?=$arResult['SECTION']['NAME']?></h1>
 				<?=$arResult['SECTION']['DESCRIPTION']?>
-	
+
 				<?$APPLICATION->SetPageProperty('title', $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_META_TITLE"]);?>
 				<?$APPLICATION->SetPageProperty('description', $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"]);?>
 				<?$APPLICATION->SetPageProperty('keywords', $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_META_KEYWORDS"]);?>

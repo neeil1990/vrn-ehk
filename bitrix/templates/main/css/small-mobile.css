@@ -1,3 +1,6 @@
 .main_container .content .selector_content .catalog_section_list li{
     width: 100%;
 }
+#authorized.popup{
+    margin-left: -202px;
+}
