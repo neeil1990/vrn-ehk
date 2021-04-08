@@ -703,7 +703,8 @@ div.modern-page-navigation a{
 #authorized.popup{
     padding: 20px;
 }
-#authorized.popup .personal_enter .line .value input[type=text], .personal_enter .line .value input[type=password],
+#authorized.popup .personal_enter .line .value input[type=text],
+#authorized.popup .personal_enter .line .value input[type=password],
 #authorized.popup .personal_enter input[type=submit]{
     width: 100%;
     box-sizing: border-box;
