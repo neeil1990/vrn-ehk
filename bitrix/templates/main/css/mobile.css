@@ -54,6 +54,8 @@ h1,
 }
 .mobile-header .menu .col .cart span{
     position: absolute;
+    top: -5px;
+    right: -10px;
 }
 
 .mobile-header .menu .col .logo img{
