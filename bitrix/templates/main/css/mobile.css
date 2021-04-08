@@ -252,12 +252,11 @@ h1,
 }
 .catalog_section_list .items .item{
     float: unset;
-    margin: 2px;
     display: inline-block;
 }
 .catalog_section_list .items .item,
 .catalog_section_list .items .item .image{
-    width: 168px;
+    width: 145px;
 }
 .content#inner .title_block h1{
     color: #000000;
