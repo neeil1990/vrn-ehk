@@ -2,5 +2,6 @@
     width: 100%;
 }
 #authorized.popup{
-    margin-left: -202px;
+    left: 50%;
+    transform: translateX(7%);
 }

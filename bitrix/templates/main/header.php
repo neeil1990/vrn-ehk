@@ -39,7 +39,7 @@
 <? $APPLICATION->ShowHeadScripts() // Вывода служебных скриптов ?>
 
         <link href="<?=SITE_TEMPLATE_PATH?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 768px)">
-        <link href="<?=SITE_TEMPLATE_PATH?>/css/small-mobile.css" rel="stylesheet" media="screen and (max-width: 375px)">
+        <link href="<?=SITE_TEMPLATE_PATH?>/css/small-mobile.css" rel="stylesheet" media="screen and (max-width: 485px)">
 		<!--[if lt IE 8]><link rel="stylesheet" href="/bitrix/templates/main/css/ie.css" type="text/css" /><![endif]-->
 
 		<!-- Отключение обработки номеров Skype -->
