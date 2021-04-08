@@ -103,7 +103,7 @@
                                 </table>
                                 <?}?>
                                     <?$arTmp = explode(',', $contact['PROPERTY_MAP_VALUE']);
-							$position['yandex_lat']= $arTmp[0]; 
+							$position['yandex_lat']= $arTmp[0];
 							$position['yandex_lon']=$arTmp[1];
 							$position['yandex_scale']="13";
 							$position['PLACEMARKS'][] = array(
@@ -203,7 +203,7 @@
                     </tbody>
                 </table>
                 <div class="map">
-                                            <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=2y7kXX4oEbQBoW4kSyjVvoti8QGjKo3O&width=826&height=365"></script>
+                                            <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=2y7kXX4oEbQBoW4kSyjVvoti8QGjKo3O&width=100%&height=365"></script>
                                             <?$APPLICATION->IncludeComponent(
 								"bitrix:map.yandex.view",
 								"",

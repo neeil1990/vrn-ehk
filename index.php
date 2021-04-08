@@ -117,7 +117,7 @@ $APPLICATION->SetTitle("Художественная ковка и кованы�
 								<!--noindex-->
 								<a rel="nofollow" class="image" href="<?=$section["SECTION_PAGE_URL"]?>">
 									<span>
-										<img <?=My::NewResize($section["PICTURE"],180,120,false);?> alt="<?=$section["NAME"]?>" />
+										<img src="<?=CFile::GetPath($section["PICTURE"])?>" alt="<?=$section["NAME"]?>" />
 									</span>
 								</a>
 								<!--/noindex-->
@@ -151,7 +151,7 @@ $APPLICATION->SetTitle("Художественная ковка и кованы�
 								<!--noindex-->
 								<a rel="nofollow" class="image" href="<?=$section["SECTION_PAGE_URL"]?>">
 									<span>
-										<img <?=My::NewResize($section["PICTURE"],180,120,false);?> alt="<?=$section["NAME"]?>" />
+										<img src="<?=CFile::GetPath($section["PICTURE"])?>" alt="<?=$section["NAME"]?>" />
 									</span>
 								</a>
 								<!--/noindex-->

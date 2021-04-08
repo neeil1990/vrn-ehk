@@ -688,6 +688,9 @@ div.modern-page-navigation a{
 .price_page .price_list .item .name{
     width: auto;
 }
+.contacts_page .info_col .map{
+    width: 100%;
+}
 
 
 
