@@ -39,16 +39,9 @@ h1,
     box-shadow: 0 10px 15px rgb(4 6 4 / 10%);
 }
 
-.mobile-header .menu .col:first-child{
-    flex-grow: 1;
-}
-
 .mobile-header .menu .col .logo{
     display: block;
     margin-left: 10px;
-}
-.mobile-header .menu .col .cart{
-    width: 60px;
 }
 .mobile-header .menu .col .cart a{
     font-size: 20px;
@@ -70,8 +63,9 @@ h1,
 
 .mobile-header .menu .col .phone{
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
+    line-height: 1;
 }
 
 .mobile-header .menu .col .menu-btn{
@@ -148,7 +142,6 @@ h1,
 {
     width: 100%;
     height: auto;
-    max-height: 200px;
     box-sizing: border-box;
 }
 .main_container .content .selector_content .catalog_section_list li .name{

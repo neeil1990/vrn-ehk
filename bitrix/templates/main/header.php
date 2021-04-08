@@ -328,6 +328,16 @@
                         </a>
                     </div>
                     <div class="col">
+                        <div class="phone">
+                            <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone_mobile.php", Array(), Array(
+                                    "MODE"      => "html",
+                                    "NAME"      => "телефон сверху",
+                                    "TEMPLATE"  => "top_phone.php"
+                                )
+                            );?>
+                        </div>
+                    </div>
+                    <div class="col">
                         <div class="cart mobile_basket">
                             <?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.line", "mobile", array(
                                 "PATH_TO_BASKET" => "/basket/",
@@ -350,14 +360,7 @@
                 </div>
 
                 <div class="drop-down-menu">
-                    <div class="phone">
-                        <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/top_phone_mobile.php", Array(), Array(
-                                "MODE"      => "html",
-                                "NAME"      => "телефон сверху",
-                                "TEMPLATE"  => "top_phone.php"
-                            )
-                        );?>
-                    </div>
+
                     <div class="address">
                         <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/includes/address.php", Array(), Array(
                                 "MODE"      => "html",
@@ -365,6 +368,9 @@
                                 "TEMPLATE"  => "address.php"
                             )
                         );?>
+                    </div>
+                    <div class="time-work">
+                        <p>Часы работы:<br/> 8:00 - 17:00 (пн-пт), 8:30 - 16:30 (сб), воскресенье - выходной</p>
                     </div>
                     <div class="personal">
                         <nofollow>
