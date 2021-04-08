@@ -133,10 +133,7 @@ h1,
 .main_container .content .selector_content .catalog_section_list{
     margin: 0 auto;
 }
-.main_container .content .selector_content .catalog_section_list li
-{
-    width: 100%;
-}
+
 .main_container .content .selector_content .catalog_section_list li .image,
 .category_home_page .image img
 {
@@ -247,9 +244,20 @@ h1,
     margin: 0 auto;
 
 }
+.main_container .content.section{
+    padding: 0 10px 1px 10px;
+}
+.catalog_section_list .items{
+    text-align: center;
+}
 .catalog_section_list .items .item{
     float: unset;
-    margin: 10px auto;
+    margin: 2px;
+    display: inline-block;
+}
+.catalog_section_list .items .item,
+.catalog_section_list .items .item .image{
+    width: 168px;
 }
 .content#inner .title_block h1{
     color: #000000;
@@ -265,6 +273,7 @@ h1,
     width: 100%;
     height: auto;
     border: none;
+    display: inline-block;
 }
 .catalog_detail .image_col .preview_images{
     display: none;

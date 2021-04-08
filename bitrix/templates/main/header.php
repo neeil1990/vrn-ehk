@@ -39,6 +39,7 @@
 <? $APPLICATION->ShowHeadScripts() // Вывода служебных скриптов ?>
 
         <link href="<?=SITE_TEMPLATE_PATH?>/css/mobile.css" rel="stylesheet" media="screen and (max-width: 768px)">
+        <link href="<?=SITE_TEMPLATE_PATH?>/css/small-mobile.css" rel="stylesheet" media="screen and (max-width: 375px)">
 		<!--[if lt IE 8]><link rel="stylesheet" href="/bitrix/templates/main/css/ie.css" type="text/css" /><![endif]-->
 
 		<!-- Отключение обработки номеров Skype -->
@@ -398,7 +399,7 @@
                 </div>
             </div>
 
-			<div class="content" <?if(!$is_main){ echo 'id="inner"'; }?>>
+			<div class="content <? if(count($pages) == 4 && in_array('catalog', $pages)):?>section<?endif;?>" <?if(!$is_main){ echo 'id="inner"'; }?>>
 				<?if(!$is_main){?>
 				<div class="title_block">
 					<div class="breadcrumbs">
