@@ -39,6 +39,11 @@ $special_text = $special_text["PREVIEW_TEXT"];
 <div class="catalog_detail" id="<?=$arItemIDs['ID'];?>">
 	<div class="image_col">
 		<div class="big_images">
+            <? if($arResult["PROPERTIES"]["NEW_STICKER"]["VALUE"] == "Y"):?>
+            <div class="stickers">
+                <div class="news">Новинка</div>
+            </div>
+            <? endif; ?>
 			<?if($arResult["PROPERTIES"]["LAST_PRODUCT"]["VALUE"] == "Y"):?>
 				<div class="last-prod">
 					<img src="<?=SITE_TEMPLATE_PATH ?>/images/last_prod.png">
@@ -73,7 +78,7 @@ $special_text = $special_text["PREVIEW_TEXT"];
 			<?}
 			if($pic_count==0)
 			{?>
-				<div class="cur_image">	
+				<div class="cur_image">
 					<span>
 						<img <?=My::NewResize($arResult["DETAIL_PICTURE"]["ID"],420,420,false);?> alt="<?=$arResult["NAME"]?>" />
 					</span>
@@ -116,50 +121,50 @@ $special_text = $special_text["PREVIEW_TEXT"];
 	</div>
 	<div class="info_col">
 		<div class="buy_block <?if ($arResult["PROPERTIES"]["SPEC_PRICE"]["VALUE"] == "Y") { echo 'special';}?>">
-			
+
 				<?if($arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"] && $arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"] != "10.10")
 				{?>
 				<span class="art">
 					Арт. <?=$arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"]?>
 				</span>
 				<?}?>
-			
-				
-				
-			
-			
-			
+
+
+
+
+
+
 				<?if($arResult["CATALOG_QUANTITY"] && $price["PRICE"]>0)
 				{
 					if ($price["FULL"]>$price["PRICE"]) {?>
 					<div class="price with_old">
-						<b><?=My::Money($price["FULL"])?></b> 
-						
+						<b><?=My::Money($price["FULL"])?></b>
+
 						<span class="module">
 							руб.
 							<span>
-								/ 
+								/
 							</span>
 						<?=$arResult["PROPERTIES"]["CML2_BASE_UNIT"]["VALUE"]?>.
 						</span>
-						
+
 						<div class="with_sale">
 						<?=My::Money($price["PRICE"]);?>
 						<b>руб.</b><b><span class="module"><span> / </span><?=$arResult["PROPERTIES"]["CML2_BASE_UNIT"]["VALUE"]?>.</span></b>
 						</div>
-					</div>	
+					</div>
 					<?}else{
 					?>
-					<div class="price"><b><?=My::Money($price["PRICE"]);?></b> руб.<span class="module"><span> / </span><?=$arResult["PROPERTIES"]["CML2_BASE_UNIT"]["VALUE"]?>.</span></div> 
+					<div class="price"><b><?=My::Money($price["PRICE"]);?></b> руб.<span class="module"><span> / </span><?=$arResult["PROPERTIES"]["CML2_BASE_UNIT"]["VALUE"]?>.</span></div>
 					<?}?>
-					
-					
+
+
 					<?
 						$arPrice = CCatalogProduct::GetOptimalPrice($arResult["ID"], 1, $USER->GetUserGroupArray(), "N");
 						$discount = CCatalogDiscount::GetList(Array("SORT"=>"ASC"), Array("ID" => $arPrice["DISCOUNT"]["ID"]), false, false, Array("NAME", "NOTES"));
 						$discount = $discount->GetNext();
 						if ($discount) { ?>
-						
+
 							<?if ( $price["FULL"] > $price["PRICE"] ) { ?>
 								<div class="special_title sale_b">
 									<a href="#">
@@ -209,9 +214,9 @@ $special_text = $special_text["PREVIEW_TEXT"];
 					    }
 				    */
 					?>
-					
+
 					<?if ($arResult["PROPERTIES"]["SPEC_PRICE"]["VALUE"] == "Y") {?>
-					
+
 							<div class="special_title">
 								<a href="#">
 									<span class="text">Специальная<br />цена</span>
@@ -220,9 +225,9 @@ $special_text = $special_text["PREVIEW_TEXT"];
 									</span>
 								</a>
 							</div>
-					
+
 					<?}?>
-					
+
 						<?if($arResult["CATALOG_QUANTITY"] && $price["PRICE"]>0)
 			{
 				$width=100;
@@ -257,19 +262,19 @@ $special_text = $special_text["PREVIEW_TEXT"];
 				<div class="count_block">
 					<span class="label">Кол-во:</span>
 					<span class="value"><input type="text" data-rate="<?=$count?>" value="<?=$count?>"/><a href="#" class="plus">+</a><a href="#" class="minus">-</a></span>
-					
+
 					<div class="clear"></div>
 				</div>
-				
+
 				<div class="quantity">
 					<? if($arResult["CATALOG_WEIGHT"]): ?>
 						<span class="label">Вес: <?=$arResult["CATALOG_WEIGHT"]?> гр.</span><br/>
 					<? endif; ?>
 					<span class="label">В наличии: <?=$arResult["CATALOG_QUANTITY"]?> <?=$arResult['CATALOG_MEASURE_NAME']?>.</span>
 				</div>
-				
+
 			<?}?>
-			
+
 					<!--noindex-->
 					<a rel="nofollow" href="#" data-id="<?=$arResult["ID"]?>" class="buy_but add2basket <?if(!$arResult["CATALOG_QUANTITY"]){echo "null";}?>">В корзину</a>
 					<!--/noindex-->
@@ -283,7 +288,7 @@ $special_text = $special_text["PREVIEW_TEXT"];
 					<a href="#" class="buy_but open_popup change_item_id" data-id="no_item" data-itemid="<?=$arResult["ID"]?>">Заказать</a>
 					<!--/noindex-->
 				<?}?>
-		
+
 			<?
 				foreach($arResult['DESCRIPTION_8'] as $k => $v){
 					if($v == 'Вес'){
@@ -392,14 +397,14 @@ $special_text = $special_text["PREVIEW_TEXT"];
 														<img <?=My::NewResize($item["PREVIEW_PICTURE"]["ID"],219,210,false);?> alt="<?=$item["NAME"]?>" />
 													</span>
 												</a>
-												
+
 													<?if($item["PROPERTIES"]["CML2_ARTICLE"]["VALUE"] && $item["PROPERTIES"]["CML2_ARTICLE"]["VALUE"] != "10.10")
 													{?>
 													<span class="art">
 														Арт. <?=$item["PROPERTIES"]["CML2_ARTICLE"]["VALUE"]?>
 													</span>
 													<?}?>
-												
+
 												<span class="name">
 													<a href="<?=$item["DETAIL_PAGE_URL"]?>">
 														<?=$item["NAME"]?>

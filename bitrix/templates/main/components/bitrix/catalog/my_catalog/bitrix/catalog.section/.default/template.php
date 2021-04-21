@@ -30,24 +30,26 @@ if (!empty($arResult['ITEMS']))
 			$strMainID = $this->GetEditAreaId($arItem['ID']);
 			$price=My::GetMinPrice($arItem["ID"],1);?>
 			<div class="item" id="<?=$strMainID;?>">
-			
-			<?
-			//var_dump($arItem["PROPERTIES"]["SPEC_RAZDEL"]["VALUE"] ,$arItem["PROPERTIES"]["NEW_RAZDEL"]["VALUE"]);
-			?>
-			
+
+			<? if($arItem["PROPERTIES"]["NEW_STICKER"]["VALUE"] == "Y"): ?>
+                <div class="stickers">
+                    <div class="news">Новинка</div>
+                </div>
+            <? endif; ?>
+
 			<?if ($arItem["PROPERTIES"]["STICKER"]["VALUE"] == "Y") {?>
 				<?if ($price["FULL"] > $price["PRICE"]) {?>
 					<div class="sale <?=($arItem["PROPERTIES"]["LAST_PRODUCT"]["VALUE"] == "Y") ? "last" : null;?>">- <?=round((($price["FULL"] - $price["PRICE"]) / $price["FULL"]) * 100);?>%</div>
 				<?}?>
 			<?}?>
-			
+
 			<?if($arItem["PROPERTIES"]["LAST_PRODUCT"]["VALUE"] == "Y"):?>
 				<div class="last-prod">
 					<img src="<?=SITE_TEMPLATE_PATH ?>/images/last_prod.png">
 				</div>
 			<?endif;?>
-			
-			
+
+
 				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="image">
 					<span>
 						<img <?=My::NewResize($arItem["PREVIEW_PICTURE"]["ID"],219,210,false);?> alt="<?=$arItem["NAME"]?>" />
@@ -64,17 +66,17 @@ if (!empty($arResult['ITEMS']))
 					<?}else{?>
 					<span class="art" style="background:none"></span>
 					<?}?>
-					
+
 				<?
-					$arrayP = array('NAIMENOVANIE_SAYT01','NAIMENOVANIE_SAYT02','NAIMENOVANIE_SAYT03');	
+					$arrayP = array('NAIMENOVANIE_SAYT01','NAIMENOVANIE_SAYT02','NAIMENOVANIE_SAYT03');
 					foreach($arrayP as $p){
 					$prop = CIBlockElement::GetProperty($arItem['IBLOCK_ID'], $arItem["ID"], array("sort" => "asc"), Array("CODE"=>$p)); // по известным только Битрикс причинам, при выводе Артикула в списке, Битрикс обрезал 0 в начале и конце, поэтому добавлена таккая конструкция
 					$prop = $prop -> Fetch();
 					$arrayP[$prop['CODE']] =  $prop['VALUE'];
 					}
 				?>
-					
-			
+
+
 
 				<span class="name">
 					<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
@@ -92,15 +94,15 @@ if (!empty($arResult['ITEMS']))
 				{?>
 					<?if ($price["FULL"] > $price["PRICE"]) {?>
 					<?/*?><div class="price with_old"><div class="old"><b><?=My::Money($price["FULL"])?></b> руб.</div><b><?=My::Money($price["PRICE"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div><?*/?>
-						
-					
+
+
 							<?if($arItem["PROPERTIES"]["STICKER"]["VALUE"] == "Y" or $arItem["PROPERTIES"]["LAST_PRODUCT"]["VALUE"] == "Y"):?>
 								<div class="price with_old"><div class="old"><b><?=My::Money($price["FULL"])?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div><b><?=My::Money($price["PRICE"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div>
 							<?else:?>
 								<div class="price"><div class="old"><b></b></div><b><?=My::Money($price["FULL"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div>
 							<?endif;?>
-						
-						
+
+
 					<?
 					}else{?>
 					<div class="price"><div class="old"><b></b></div><b><?=My::Money($price["FULL"]);?></b> руб.<?if ($arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']){?> / <?=$arItem['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?>.<?}?></div>
@@ -122,5 +124,5 @@ if (!empty($arResult['ITEMS']))
 	{?>
 		<?=$arResult["NAV_STRING"]?>
 	<?}
-	
+
 }?>

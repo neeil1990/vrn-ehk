@@ -68,12 +68,28 @@
 .catalog_detail .image_col .big_images .last-prod{
 	    position: absolute;
 		top: 20px;
-		left: 20px;	
+		left: 20px;
 		z-index: 10;
 }
 .catalog_detail .image_col .big_images .last-prod img{
 		max-width: 100px;
 }
+
+.catalog_detail .image_col .big_images .stickers{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+    font-size: 16px;
+    font-weight: bold;
+}
+.catalog_detail .image_col .big_images .stickers .news{
+    background-color: #E4DFD2;
+    color: #7D5E5E;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 .catalog_detail .image_col .big_images .big_image{
 	left: 0;
     opacity: 0;
@@ -710,15 +726,15 @@
     padding-right: 20px;
 }
 
-.bx_order_make .bx_block input[type="text"], 
-.bx_order_make .bx_block textarea, 
+.bx_order_make .bx_block input[type="text"],
+.bx_order_make .bx_block textarea,
 .bx_order_make .bx_block select{ border: 1px solid #ccc !important; height: 40px; line-height: 40px; border-radius: 5px; box-shadow: none; transition: border-color 0.2s ease 0s; padding: 0 0 0 10px; }
 
-.bx_order_make .bx_block input[type="text"]:hover, 
-.bx_order_make .bx_block textarea:hover, 
+.bx_order_make .bx_block input[type="text"]:hover,
+.bx_order_make .bx_block textarea:hover,
 .bx_order_make .bx_block select:hover,
-.bx_order_make .bx_block input[type="text"]:focus, 
-.bx_order_make .bx_block textarea:focus, 
+.bx_order_make .bx_block input[type="text"]:focus,
+.bx_order_make .bx_block textarea:focus,
 .bx_order_make .bx_block select:focus{ border-color: #a64221 !important; transition: border-color 0.2s ease 0s; }
 
 .bx_order_make .bx_block select{ margin-bottom: 20px; }

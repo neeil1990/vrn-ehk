@@ -42,7 +42,7 @@
 		{
 			$size_array=array("width" =>$width, "height" => $height);
 		}
-		$file=CFile::ResizeImageGet($image_id, $size_array, BX_RESIZE_IMAGE_PROPORTIONAL, false);  
+		$file=CFile::ResizeImageGet($image_id, $size_array, BX_RESIZE_IMAGE_PROPORTIONAL, false);
 		$result=array(
 			"SRC"=>$file["src"],
 			"W"=>$file["width"],
@@ -68,16 +68,16 @@
 				}
 				$path_with_watermark=$_SERVER["DOCUMENT_ROOT"].str_replace(".","_w.",$result["SRC"]);
 				$result_water=CFile::ResizeImageFile(
-					$_SERVER["DOCUMENT_ROOT"].$result["SRC"], 
-					$path_with_watermark, 
-					false, 
-					BX_RESIZE_IMAGE_PROPORTIONAL, 
+					$_SERVER["DOCUMENT_ROOT"].$result["SRC"],
+					$path_with_watermark,
+					false,
+					BX_RESIZE_IMAGE_PROPORTIONAL,
 					array(
-						"position" => "center", 
+						"position" => "center",
 						"file"=>$_SERVER["DOCUMENT_ROOT"].$watermark_pic["SRC"],
 						"alpha_level"=>$opacity
-					), 
-					false, 
+					),
+					false,
 					false
 				);
 				if($result_water)
@@ -133,7 +133,7 @@
 		{
 			$size_array=array("width" =>$width, "height" => $height);
 		}
-		$file=CFile::ResizeImageGet($image_id, $size_array, BX_RESIZE_IMAGE_PROPORTIONAL, false);  
+		$file=CFile::ResizeImageGet($image_id, $size_array, BX_RESIZE_IMAGE_PROPORTIONAL, false);
 		if($file["src"])
 		{
 			$result='src="'.$file["src"].'"';
@@ -165,16 +165,16 @@
 					}
 					$path_with_watermark=$_SERVER["DOCUMENT_ROOT"].str_replace(".","_w.",$file["src"]);
 					$result_water=CFile::ResizeImageFile(
-						$_SERVER["DOCUMENT_ROOT"].$file["src"], 
-						$path_with_watermark, 
-						false, 
-						BX_RESIZE_IMAGE_PROPORTIONAL, 
+						$_SERVER["DOCUMENT_ROOT"].$file["src"],
+						$path_with_watermark,
+						false,
+						BX_RESIZE_IMAGE_PROPORTIONAL,
 						array(
-							"position" => "center", 
+							"position" => "center",
 							"file"=>$_SERVER["DOCUMENT_ROOT"].$watermark_pic["SRC"],
 							"alpha_level"=>$opacity
-						), 
-						false, 
+						),
+						false,
 						false
 					);
 					if($result_water)
@@ -292,7 +292,7 @@
 
 		# Все варианты написания разрядов прописью скомпануем в один небольшой массив
 	 	$r=array(
-		  	array('...ллион','','а','ов'), // используется для всех неизвестно больших разрядов 
+		  	array('...ллион','','а','ов'), // используется для всех неизвестно больших разрядов
 		  	array('тысяч','а','и',''),
 		  	array('миллион','','а','ов'),
 		  	array('миллиард','','а','ов'),
@@ -365,7 +365,7 @@
 			        $quantity = $nearestQuantity;
 			        $arPrice = CCatalogProduct::GetOptimalPrice($productID, $quantity, $USER->GetUserGroupArray(), "N");
 			    }
-			}	
+			}
 			if($arPrice["DISCOUNT_PRICE"]==0)
 			{
 				$price=false;
@@ -523,7 +523,7 @@ function myscandir($dir)
 function clear_dir($dir)
 {
     $list = myscandir($dir);
-    
+
     foreach ($list as $file)
     {
         if (is_dir($dir.$file))
@@ -544,12 +544,50 @@ AddEventHandler("catalog", "OnSuccessCatalogImport1C", Array("CatalogImport1C", 
 
 class CatalogImport1C
 {
-    
+
     function OnSuccessCatalogImport1CHandler(&$arFields)
     {
 		clear_dir($_SERVER['DOCUMENT_ROOT'].'/bitrix/cache/');
     }
 }
 
+
+AddEventHandler("iblock", "OnBeforeIBlockElementAdd", "OnBeforeIBlockElementAddHandler");
+function OnBeforeIBlockElementAddHandler(&$arFields)
+{
+    if($arFields['IBLOCK_ID'] == '21'){
+
+		$property_enums = CIBlockPropertyEnum::GetList([], ["IBLOCK_ID" => $arFields['IBLOCK_ID'], "CODE" => "NEW_STICKER"]);
+		if($enum_fields = $property_enums->GetNext()){
+			$arFields['PROPERTY_VALUES'][$enum_fields['PROPERTY_ID']] = ['n0' => ['VALUE' => $enum_fields['ID']]];
+		}
+
+		if($arFields['SORT'] == '500')
+			$arFields['SORT'] = '50';
+
+    	return;
+	}
+}
+
+if(CModule::IncludeModule("iblock"))
+{
+    // Отключаем галочку новинка у элементов.
+    $arSelect = Array("ID", "IBLOCK_ID", "NAME", "DATE_CREATE","PROPERTY_*");
+    $arFilter = Array(
+        "IBLOCK_ID" => 21,
+        "ACTIVE" => "Y",
+        ">DATE_CREATE" => date($DB->DateFormatToPHP(CLang::GetDateFormat("SHORT")), strtotime('-90 day')),
+        "<DATE_CREATE" => date($DB->DateFormatToPHP(CLang::GetDateFormat("SHORT")), strtotime('-89 day')),
+    );
+    $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+    while($ob = $res->GetNextElement())
+    {
+        $arFields = $ob->GetFields();
+        $arProps = $ob->GetProperties();
+
+        if($arProps['NEW_STICKER']['VALUE'] == "Y")
+            CIBlockElement::SetPropertyValuesEx($arFields['ID'], $arFields['IBLOCK_ID'], array($arProps['NEW_STICKER']['CODE'] => ""));
+    }
+}
 
 ?>

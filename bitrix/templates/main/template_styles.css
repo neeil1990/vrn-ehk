@@ -391,6 +391,22 @@ a.button:hover{ background: #fff; color: #b26742; }
 .catalog_section_list .items .item .last-prod img{
 	max-width:70px;
 }
+
+.catalog_section_list .items .item .stickers{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: bold;
+}
+.catalog_section_list .items .item .stickers .news{
+    background-color: #E4DFD2;
+    color: #7D5E5E;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .catalog_section_list .items .item:hover{ z-index: 20; transition: border-color .2s; border-color:#a64221; }
 .catalog_section_list .items .item .image{
 	width: 219px;
