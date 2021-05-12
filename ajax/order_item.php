@@ -16,7 +16,7 @@
 	$PROP = array();
 	foreach($_POST as $key=>$value)
 	{
-		$PROP[$key]=$value;
+		$PROP[$key]=strip_tags($value);
 	}
 	$item="-";
 	$ar_cur_item=CIBlockElement::GetByID($PROP["ITEM"]);

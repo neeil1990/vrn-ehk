@@ -8,7 +8,7 @@ if($USER->IsAuthorized())
 		$fields=array();
 		foreach($_POST as $key=>$value)
 		{
-			$fields[$key]=$value;
+			$fields[$key]=strip_tags($value);
 		}
 		if(isset($fields["EMAIL"]) && !empty($fields["EMAIL"]))
 		{

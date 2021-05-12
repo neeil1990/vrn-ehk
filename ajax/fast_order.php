@@ -15,7 +15,7 @@ if(CModule::IncludeModule("iblock") && CModule::IncludeModule("sale") && CModule
 	$PROP = array();
 	foreach($_POST as $key=>$value)
 	{
-		$PROP[$key]=$value;
+		$PROP[$key]=strip_tags($value);
 	}
 	$all_sum=0;
 	$user_id=3;

@@ -6,7 +6,7 @@
 	{
 		foreach($_POST as $key=>$value)
 		{
-			$PROP[$key]=$value;
+			$PROP[$key]=strip_tags($value);
 		}
 		if(strlen($cur_user["PASSWORD"])>32)
       	{

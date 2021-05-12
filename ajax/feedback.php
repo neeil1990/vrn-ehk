@@ -17,7 +17,7 @@
 	$PROP = array();
 	foreach($_POST as $key=>$value)
 	{
-		$PROP[$key]=$value;
+		$PROP[$key]=strip_tags($value);
 	}
 	$arLoadProductArray = Array(
 		"MODIFIED_BY"    => $USER->GetID(),
