@@ -27,7 +27,7 @@ else
 	$number=16;
 }
 $sort="sort";
-$sort_to="DESC";
+$sort_to="ASC";
 if(isset($_GET["sort"]) && !empty($_GET["sort"]))
 {
 	$sort_arr=explode("-", $_GET["sort"]);
