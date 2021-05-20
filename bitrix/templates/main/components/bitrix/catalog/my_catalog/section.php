@@ -140,9 +140,8 @@ if($items_count>0 || isset($_GET["SHOW"]) && !empty($_GET["SHOW"]))
 							<select name="sort" onchange="sort_form.submit();">
 								<option value="CATALOG_PRICE_1-ASC" <?if($_GET["sort"]=="CATALOG_PRICE_1-ASC"){echo "selected";}?>>По цене, сначала дешевые</option>
 								<option value="CATALOG_PRICE_1-DESC" <?if($_GET["sort"]=="CATALOG_PRICE_1-DESC"){echo "selected";}?>>По цене, сначала дорогие</option>
-								<option value="NAME-ASC" <?if($_GET["sort"]=="NAME-ASC"){echo "selected";}?>>По названию, А-Я</option>
+								<option value="NAME-ASC" <?if($_GET["sort"]=="NAME-ASC" || empty($_GET["sort"]) || !isset($_GET["sort"])){echo "selected";}?>>По названию, А-Я</option>
 								<option value="NAME-DESC" <?if($_GET["sort"]=="NAME-DESC"){echo "selected";}?>>По названию, Я-А</option>
-								<option value="created_date-DESC" <?if($_GET["sort"]=="created_date-DESC" || empty($_GET["sort"]) || !isset($_GET["sort"])){echo "selected";}?>>Новинки</option>
 							</select>
 						</fieldset>
 					</form>

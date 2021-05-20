@@ -26,7 +26,7 @@ else
 {
 	$number=16;
 }
-$sort="created_date";
+$sort="sort";
 $sort_to="DESC";
 if(isset($_GET["sort"]) && !empty($_GET["sort"]))
 {
@@ -51,10 +51,10 @@ if(isset($_GET["SHOW"]) && !empty($_GET["SHOW"]))
 			if(empty($_GET["sort"])){
 				$sort = "PROPERTY_SORT_CAT_RASP";
 				$sort_to = "asc,nulls";
-			}		
+			}
             $GLOBALS["arrFilter"]["PROPERTY_NEW_RAZDEL_VALUE"]="да";
             $APPLICATION->SetTitle(tplvar('name_2'));
-            break;	
+            break;
         case "LIDER":
             $GLOBALS["arrFilter"]["PROPERTY_LIDER_VALUE"]="да";
             $APPLICATION->SetTitle("Популярные товары");
@@ -70,10 +70,10 @@ if(isset($_GET["SHOW"]) && !empty($_GET["SHOW"]))
 		 }
             $GLOBALS["arrFilter"]["PROPERTY_SPEC_RAZDEL_VALUE"]="да";
             $APPLICATION->SetTitle(tplvar('name_1'));
-            break;	
+            break;
         default:$APPLICATION->SetTitle("Фильтр по товарам");
     }
-	
+
 }
 else
 {
@@ -86,8 +86,8 @@ else
 
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog", 
-	"my_catalog", 
+	"bitrix:catalog",
+	"my_catalog",
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "21",
