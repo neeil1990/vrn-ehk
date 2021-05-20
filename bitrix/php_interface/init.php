@@ -576,8 +576,8 @@ if(CModule::IncludeModule("iblock"))
     $arFilter = Array(
         "IBLOCK_ID" => 21,
         "ACTIVE" => "Y",
-        ">DATE_CREATE" => date($DB->DateFormatToPHP(CLang::GetDateFormat("SHORT")), strtotime('-90 day')),
-        "<DATE_CREATE" => date($DB->DateFormatToPHP(CLang::GetDateFormat("SHORT")), strtotime('-89 day')),
+        "<DATE_CREATE" => date($DB->DateFormatToPHP(CLang::GetDateFormat("SHORT")), strtotime('-90 day')),
+		"PROPERTY_NEW_STICKER_VALUE" => "Y"
     );
     $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
     while($ob = $res->GetNextElement())
