@@ -560,10 +560,8 @@ function OnBeforeIBlockElementAddHandler(&$arFields)
 		$property_enums = CIBlockPropertyEnum::GetList([], ["IBLOCK_ID" => $arFields['IBLOCK_ID'], "CODE" => "NEW_STICKER"]);
 		if($enum_fields = $property_enums->GetNext()){
 			$arFields['PROPERTY_VALUES'][$enum_fields['PROPERTY_ID']] = ['n0' => ['VALUE' => $enum_fields['ID']]];
-		}
-
-		if($arFields['SORT'] == '500')
 			$arFields['SORT'] = '50';
+		}
 
     	return;
 	}
